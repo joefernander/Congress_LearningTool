@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Congress | House & Senate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1a2744;
+            --navy-light: #2d3e5f;
+            --gold: #c9a227;
+            --gold-light: #e8c95a;
+            --cream: #f8f5eb;
+            --cream-dark: #ebe6d8;
+            --red: #b8433c;
+            --red-light: #d4625b;
+            --blue: #3d6a99;
+            --blue-light: #5a8bc4;
+            --text-dark: #1a1a1a;
+            --text-muted: #5a5a5a;
+            --shadow: 0 4px 20px rgba(26, 39, 68, 0.15);
+            --shadow-lg: 0 8px 40px rgba(26, 39, 68, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* Header */
+        header {
+            background: var(--navy);
+            color: var(--cream);
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        nav {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 2px solid transparent;
+            color: var(--cream);
+            padding: 0.5rem 1rem;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background: rgba(201, 162, 39, 0.15);
+            border-color: var(--gold);
+            color: var(--gold-light);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--cream);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a227' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 650px;
+            margin: 0 auto 2rem;
+            font-weight: 300;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .hero-stat {
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .hero-stat:nth-child(1) { animation-delay: 0.2s; }
+        .hero-stat:nth-child(2) { animation-delay: 0.4s; }
+        .hero-stat:nth-child(3) { animation-delay: 0.6s; }
+
+        .hero-stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            display: block;
+        }
+
+        .hero-stat-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Chamber Cards */
+        .chambers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .chamber-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .chamber-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .chamber-header {
+            padding: 2rem;
+            color: white;
+            position: relative;
+        }
+
+        .chamber-card.house .chamber-header {
+            background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%);
+        }
+
+        .chamber-card.senate .chamber-header {
+            background: linear-gradient(135deg, var(--red) 0%, var(--red-light) 100%);
+        }
+
+        .chamber-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .chamber-subtitle {
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .chamber-body {
+            padding: 2rem;
+        }
+
+        .chamber-visual {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--cream);
+            border-radius: 12px;
+            justify-content: center;
+        }
+
+        .seat {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            transition: transform 0.2s ease;
+        }
+
+        .seat:hover {
+            transform: scale(1.8);
+        }
+
+        .seat.dem {
+            background: var(--blue);
+        }
+
+        .seat.rep {
+            background: var(--red);
+        }
+
+        .seat.ind {
+            background: var(--gold);
+        }
+
+        .seat.vacant {
+            background: #ccc;
+        }
+
+        .chamber-info {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--cream-dark);
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        /* Comparison Section */
+        .comparison-table {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .comparison-header {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            background: var(--navy);
+            color: var(--cream);
+            font-weight: 600;
+        }
+
+        .comparison-header > div {
+            padding: 1.25rem 1.5rem;
+            text-align: center;
+        }
+
+        .comparison-header > div:first-child {
+            text-align: left;
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            border-bottom: 1px solid var(--cream-dark);
+            transition: background 0.2s ease;
+        }
+
+        .comparison-row:hover {
+            background: var(--cream);
+        }
+
+        .comparison-row > div {
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .comparison-row > div:not(:first-child) {
+            justify-content: center;
+            text-align: center;
+        }
+
+        .comparison-label {
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .comparison-value {
+            font-weight: 600;
+        }
+
+        .comparison-value.house {
+            color: var(--blue);
+        }
+
+        .comparison-value.senate {
+            color: var(--red);
+        }
+
+        /* State Lookup */
+        .lookup-container {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .lookup-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .lookup-header h2 {
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .state-select-wrapper {
+            max-width: 400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .state-select {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            font-family: 'Source Sans 3', sans-serif;
+            border: 2px solid var(--cream-dark);
+            border-radius: 12px;
+            background: white;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+            appearance: none;
+        }
+
+        .state-select:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .state-select-wrapper::after {
+            content: '▼';
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold);
+            pointer-events: none;
+        }
+
+        .state-result {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: var(--cream);
+            border-radius: 12px;
+            display: none;
+        }
+
+        .state-result.visible {
+            display: block;
+            animation: fadeInUp 0.4s ease-out;
+        }
+
+        .state-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .state-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .state-detail-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .state-detail-card h4 {
+            color: var(--text-muted);
+            font-family: 'Source Sans 3', sans-serif;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .state-detail-card .value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .state-detail-card .sub {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        /* Quiz Section */
+        .quiz-container {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quiz-progress {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .quiz-progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--cream-dark);
+            transition: all 0.3s ease;
+        }
+
+        .quiz-progress-dot.active {
+            background: var(--gold);
+            transform: scale(1.2);
+        }
+
+        .quiz-progress-dot.correct {
+            background: #4caf50;
+        }
+
+        .quiz-progress-dot.incorrect {
+            background: var(--red);
+        }
+
+        .quiz-question {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .quiz-option {
+            padding: 1.25rem 1.5rem;
+            border: 2px solid var(--cream-dark);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.05rem;
+        }
+
+        .quiz-option:hover:not(.disabled) {
+            border-color: var(--gold);
+            background: rgba(201, 162, 39, 0.05);
+        }
+
+        .quiz-option.selected {
+            border-color: var(--gold);
+            background: rgba(201, 162, 39, 0.1);
+        }
+
+        .quiz-option.correct {
+            border-color: #4caf50;
+            background: rgba(76, 175, 80, 0.1);
+        }
+
+        .quiz-option.incorrect {
+            border-color: var(--red);
+            background: rgba(184, 67, 60, 0.1);
+        }
+
+        .quiz-option.disabled {
+            cursor: default;
+        }
+
+        .quiz-feedback {
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+
+        .quiz-feedback.visible {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .quiz-feedback.correct {
+            background: rgba(76, 175, 80, 0.1);
+            border-left: 4px solid #4caf50;
+        }
+
+        .quiz-feedback.incorrect {
+            background: rgba(184, 67, 60, 0.1);
+            border-left: 4px solid var(--red);
+        }
+
+        .quiz-btn {
+            background: var(--navy);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-family: 'Source Sans 3', sans-serif;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-btn:hover {
+            background: var(--navy-light);
+            transform: translateY(-2px);
+        }
+
+        .quiz-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .quiz-score {
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .quiz-score h2 {
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .quiz-score .score-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .quiz-score .score-label {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        /* Apportionment Calculator */
+        .calculator-container {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .calculator-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .calculator-header h2 {
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .calculator-header p {
+            color: var(--text-muted);
+        }
+
+        .population-input-wrapper {
+            max-width: 400px;
+            margin: 0 auto 2rem;
+        }
+
+        .population-input-wrapper label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--navy);
+        }
+
+        .population-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            font-size: 1.25rem;
+            font-family: 'Source Sans 3', sans-serif;
+            border: 2px solid var(--cream-dark);
+            border-radius: 12px;
+            text-align: center;
+            transition: border-color 0.3s ease;
+        }
+
+        .population-input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .apportionment-result {
+            text-align: center;
+            padding: 2rem;
+            background: var(--cream);
+            border-radius: 12px;
+        }
+
+        .apportionment-result .result-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .apportionment-result .result-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--blue);
+        }
+
+        .apportionment-result .result-note {
+            color: var(--text-muted);
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+
+        /* Facts Section */
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .fact-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .fact-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .fact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gold);
+        }
+
+        .fact-card h3 {
+            color: var(--navy);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .fact-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: var(--cream);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .chambers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-header,
+            .comparison-row {
+                grid-template-columns: 1.5fr 1fr 1fr;
+            }
+
+            .comparison-header > div,
+            .comparison-row > div {
+                padding: 0.75rem;
+                font-size: 0.9rem;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .hero-stat-number {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Mobile nav toggle */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            bottom: 1rem;
+            left: 1rem;
+            right: 1rem;
+            background: var(--navy);
+            padding: 0.75rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+        }
+
+        .mobile-nav nav {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .mobile-nav .nav-btn {
+            font-size: 0.8rem;
+            padding: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-nav {
+                display: block;
+            }
+
+            main {
+                padding-bottom: 6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">🏛️</div>
+                <span class="logo-text">Congress 101</span>
+            </div>
+            <nav>
+                <button class="nav-btn active" data-section="overview">Overview</button>
+                <button class="nav-btn" data-section="compare">Compare</button>
+                <button class="nav-btn" data-section="states">By State</button>
+                <button class="nav-btn" data-section="quiz">Quiz</button>
+                <button class="nav-btn" data-section="facts">Key Facts</button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Understanding <span>Congress</span></h1>
+            <p>Explore the structure of the United States Congress — the legislative branch of the federal government composed of two chambers working together.</p>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-number">535</span>
+                    <span class="hero-stat-label">Total Seats</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number">50</span>
+                    <span class="hero-stat-label">States Represented</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number">1789</span>
+                    <span class="hero-stat-label">Year Established</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- Overview Section -->
+        <section class="section active" id="overview">
+            <div class="chambers-grid">
+                <div class="chamber-card house">
+                    <div class="chamber-header">
+                        <h2 class="chamber-title">House of Representatives</h2>
+                        <p class="chamber-subtitle">The People's House — proportional representation</p>
+                    </div>
+                    <div class="chamber-body">
+                        <div class="chamber-visual" id="house-seats">
+                            <!-- Seats rendered by JS -->
+                        </div>
+                        <div class="chamber-info">
+                            <div class="info-row">
+                                <span class="info-label">Total Seats</span>
+                                <span class="info-value">435</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Term Length</span>
+                                <span class="info-value">2 years</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Minimum Age</span>
+                                <span class="info-value">25 years</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Citizenship Required</span>
+                                <span class="info-value">7 years</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Presiding Officer</span>
+                                <span class="info-value">Speaker of the House</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chamber-card senate">
+                    <div class="chamber-header">
+                        <h2 class="chamber-title">Senate</h2>
+                        <p class="chamber-subtitle">The Upper Chamber — equal state representation</p>
+                    </div>
+                    <div class="chamber-body">
+                        <div class="chamber-visual" id="senate-seats">
+                            <!-- Seats rendered by JS -->
+                        </div>
+                        <div class="chamber-info">
+                            <div class="info-row">
+                                <span class="info-label">Total Seats</span>
+                                <span class="info-value">100</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Term Length</span>
+                                <span class="info-value">6 years</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Minimum Age</span>
+                                <span class="info-value">30 years</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Citizenship Required</span>
+                                <span class="info-value">9 years</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Presiding Officer</span>
+                                <span class="info-value">Vice President</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Compare Section -->
+        <section class="section" id="compare">
+            <h2 style="font-size: 2rem; color: var(--navy); margin-bottom: 2rem; text-align: center;">House vs. Senate Comparison</h2>
+            <div class="comparison-table">
+                <div class="comparison-header">
+                    <div>Feature</div>
+                    <div>House</div>
+                    <div>Senate</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-label">Number of Members</div>
+                    <div class="comparison-value house">435</div>
+                    <div class="comparison-value senate">100</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-label">Representation Basis</div>
+                    <div class="comparison-value house">By Population</div>
+                    <div class="comparison-value senate">Equal (2 per state)</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-label">Term Length</div>
+                    <div class="comparison-value house">2 years</div>
+                    <div class="comparison-value senate">6 years</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-label">Minimum Age</div>
+                    <div class="comparison-value house">25 years</div>
+                    <div class="comparison-value senate">30 years</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-label">Citizenship Requirement</div>
+                    <div class="comparison-value house">7 years</div>
+                    <div class="comparison-value senate">9 years</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-label">Elections</div>
+                    <div class="comparison-value house">All seats every 2 years</div>
+                    <div class="comparison-value senate">⅓ seats every 2 years</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-label">Presiding Officer</div>
+                    <div class="comparison-value house">Speaker of the House</div>
+                    <div class="comparison-value senate">Vice President (or President Pro Tempore)</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-label">Exclusive Powers</div>
+                    <div class="comparison-value house">Initiate revenue bills, impeach officials</div>
+                    <div class="comparison-value senate">Confirm appointments, try impeachments, ratify treaties</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-label">Debate Rules</div>
+                    <div class="comparison-value house">More limited</div>
+                    <div class="comparison-value senate">Unlimited (filibuster)</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-label">Constituents per Member</div>
+                    <div class="comparison-value house">~760,000</div>
+                    <div class="comparison-value senate">Varies by state</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- States Section -->
+        <section class="section" id="states">
+            <div class="lookup-container">
+                <div class="lookup-header">
+                    <h2>Explore by State</h2>
+                    <p>Select a state to see its congressional representation</p>
+                </div>
+                <div class="state-select-wrapper">
+                    <select class="state-select" id="state-select">
+                        <option value="">Choose a state...</option>
+                    </select>
+                </div>
+                <div class="state-result" id="state-result">
+                    <h3 class="state-name" id="state-name"></h3>
+                    <div class="state-details">
+                        <div class="state-detail-card">
+                            <h4>House Seats</h4>
+                            <div class="value" id="state-house-seats">-</div>
+                            <div class="sub">Representatives</div>
+                        </div>
+                        <div class="state-detail-card">
+                            <h4>Senate Seats</h4>
+                            <div class="value">2</div>
+                            <div class="sub">Senators (always)</div>
+                        </div>
+                        <div class="state-detail-card">
+                            <h4>Total Votes</h4>
+                            <div class="value" id="state-total">-</div>
+                            <div class="sub">in Congress</div>
+                        </div>
+                        <div class="state-detail-card">
+                            <h4>Electoral Votes</h4>
+                            <div class="value" id="state-electoral">-</div>
+                            <div class="sub">for President</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calculator-container">
+                <div class="calculator-header">
+                    <h2>Apportionment Calculator</h2>
+                    <p>See how population affects House representation</p>
+                </div>
+                <div class="population-input-wrapper">
+                    <label for="population-input">Enter a state population:</label>
+                    <input type="text" class="population-input" id="population-input" placeholder="e.g., 10,000,000">
+                </div>
+                <div class="apportionment-result">
+                    <div class="result-label">Estimated House Seats</div>
+                    <div class="result-value" id="calc-result">1</div>
+                    <div class="result-note">Based on ~760,000 people per representative. Every state is guaranteed at least 1 seat.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section class="section" id="quiz">
+            <div class="quiz-container">
+                <div class="quiz-progress" id="quiz-progress"></div>
+                <div id="quiz-content">
+                    <div class="quiz-question" id="quiz-question"></div>
+                    <div class="quiz-options" id="quiz-options"></div>
+                    <div class="quiz-feedback" id="quiz-feedback"></div>
+                    <button class="quiz-btn" id="quiz-btn" disabled>Next Question</button>
+                </div>
+                <div class="quiz-score" id="quiz-score" style="display: none;">
+                    <h2>Quiz Complete!</h2>
+                    <div class="score-number" id="final-score">0/10</div>
+                    <div class="score-label">questions correct</div>
+                    <button class="quiz-btn" id="restart-quiz">Try Again</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Facts Section -->
+        <section class="section" id="facts">
+            <h2 style="font-size: 2rem; color: var(--navy); margin-bottom: 2rem; text-align: center;">Key Facts About Congress</h2>
+            <div class="facts-grid">
+                <div class="fact-card">
+                    <h3>The Great Compromise</h3>
+                    <p>The bicameral structure was a compromise at the Constitutional Convention between large states (who wanted proportional representation) and small states (who wanted equal representation).</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Reapportionment</h3>
+                    <p>House seats are redistributed among states every 10 years after the census. The total has been fixed at 435 since 1913 (except temporarily when Alaska and Hawaii became states).</p>
+                </div>
+                <div class="fact-card">
+                    <h3>The Filibuster</h3>
+                    <p>Only the Senate has the filibuster — a procedural tactic allowing unlimited debate. Ending a filibuster requires 60 votes (called "cloture"), making it hard to pass controversial legislation.</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Staggered Senate Terms</h3>
+                    <p>Senators serve 6-year terms, but elections are staggered so only about one-third of the Senate is up for election every two years, providing continuity.</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Non-Voting Members</h3>
+                    <p>The House has 6 non-voting members representing D.C., Puerto Rico, Guam, U.S. Virgin Islands, American Samoa, and Northern Mariana Islands. They can serve on committees but cannot vote on final legislation.</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Impeachment Process</h3>
+                    <p>The House has the sole power to impeach (bring charges), while the Senate has the sole power to try impeachments. Conviction requires a two-thirds vote in the Senate.</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Revenue Bills</h3>
+                    <p>All bills for raising revenue must originate in the House of Representatives. This gives the "people's house" primary control over taxation.</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Treaty Ratification</h3>
+                    <p>Only the Senate can ratify treaties with foreign nations, requiring a two-thirds majority vote. This gives the Senate significant influence over foreign policy.</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Vice President's Role</h3>
+                    <p>The Vice President serves as President of the Senate but only votes to break ties. The Senate elects a President Pro Tempore (usually the longest-serving member of the majority party) to preside in the VP's absence.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="mobile-nav">
+        <nav>
+            <button class="nav-btn active" data-section="overview">Overview</button>
+            <button class="nav-btn" data-section="compare">Compare</button>
+            <button class="nav-btn" data-section="states">States</button>
+            <button class="nav-btn" data-section="quiz">Quiz</button>
+            <button class="nav-btn" data-section="facts">Facts</button>
+        </nav>
+    </div>
+
+    <footer>
+        <p>An educational resource about the United States Congress</p>
+    </footer>
+
+    <script>
+        // State data: name, abbreviation, house seats (2023 apportionment)
+        const stateData = [
+            { name: "Alabama", abbr: "AL", seats: 7 },
+            { name: "Alaska", abbr: "AK", seats: 1 },
+            { name: "Arizona", abbr: "AZ", seats: 9 },
+            { name: "Arkansas", abbr: "AR", seats: 4 },
+            { name: "California", abbr: "CA", seats: 52 },
+            { name: "Colorado", abbr: "CO", seats: 8 },
+            { name: "Connecticut", abbr: "CT", seats: 5 },
+            { name: "Delaware", abbr: "DE", seats: 1 },
+            { name: "Florida", abbr: "FL", seats: 28 },
+            { name: "Georgia", abbr: "GA", seats: 14 },
+            { name: "Hawaii", abbr: "HI", seats: 2 },
+            { name: "Idaho", abbr: "ID", seats: 2 },
+            { name: "Illinois", abbr: "IL", seats: 17 },
+            { name: "Indiana", abbr: "IN", seats: 9 },
+            { name: "Iowa", abbr: "IA", seats: 4 },
+            { name: "Kansas", abbr: "KS", seats: 4 },
+            { name: "Kentucky", abbr: "KY", seats: 6 },
+            { name: "Louisiana", abbr: "LA", seats: 6 },
+            { name: "Maine", abbr: "ME", seats: 2 },
+            { name: "Maryland", abbr: "MD", seats: 8 },
+            { name: "Massachusetts", abbr: "MA", seats: 9 },
+            { name: "Michigan", abbr: "MI", seats: 13 },
+            { name: "Minnesota", abbr: "MN", seats: 8 },
+            { name: "Mississippi", abbr: "MS", seats: 4 },
+            { name: "Missouri", abbr: "MO", seats: 8 },
+            { name: "Montana", abbr: "MT", seats: 2 },
+            { name: "Nebraska", abbr: "NE", seats: 3 },
+            { name: "Nevada", abbr: "NV", seats: 4 },
+            { name: "New Hampshire", abbr: "NH", seats: 2 },
+            { name: "New Jersey", abbr: "NJ", seats: 12 },
+            { name: "New Mexico", abbr: "NM", seats: 3 },
+            { name: "New York", abbr: "NY", seats: 26 },
+            { name: "North Carolina", abbr: "NC", seats: 14 },
+            { name: "North Dakota", abbr: "ND", seats: 1 },
+            { name: "Ohio", abbr: "OH", seats: 15 },
+            { name: "Oklahoma", abbr: "OK", seats: 5 },
+            { name: "Oregon", abbr: "OR", seats: 6 },
+            { name: "Pennsylvania", abbr: "PA", seats: 17 },
+            { name: "Rhode Island", abbr: "RI", seats: 2 },
+            { name: "South Carolina", abbr: "SC", seats: 7 },
+            { name: "South Dakota", abbr: "SD", seats: 1 },
+            { name: "Tennessee", abbr: "TN", seats: 9 },
+            { name: "Texas", abbr: "TX", seats: 38 },
+            { name: "Utah", abbr: "UT", seats: 4 },
+            { name: "Vermont", abbr: "VT", seats: 1 },
+            { name: "Virginia", abbr: "VA", seats: 11 },
+            { name: "Washington", abbr: "WA", seats: 10 },
+            { name: "West Virginia", abbr: "WV", seats: 2 },
+            { name: "Wisconsin", abbr: "WI", seats: 8 },
+            { name: "Wyoming", abbr: "WY", seats: 1 }
+        ];
+
+        // Quiz questions
+        const quizQuestions = [
+            {
+                question: "How many total voting members are in the U.S. House of Representatives?",
+                options: ["100", "435", "535", "350"],
+                correct: 1,
+                explanation: "The House has 435 voting members, apportioned among states based on population."
+            },
+            {
+                question: "How many senators does each state have?",
+                options: ["1", "2", "Varies by population", "3"],
+                correct: 1,
+                explanation: "Every state has exactly 2 senators, regardless of population size."
+            },
+            {
+                question: "How long is a term for a U.S. Representative?",
+                options: ["2 years", "4 years", "6 years", "Lifetime"],
+                correct: 0,
+                explanation: "Representatives serve 2-year terms, meaning all House seats are up for election every 2 years."
+            },
+            {
+                question: "How long is a term for a U.S. Senator?",
+                options: ["2 years", "4 years", "6 years", "8 years"],
+                correct: 2,
+                explanation: "Senators serve 6-year terms, with about one-third of the Senate up for election every 2 years."
+            },
+            {
+                question: "What is the minimum age to serve in the House of Representatives?",
+                options: ["18 years", "21 years", "25 years", "30 years"],
+                correct: 2,
+                explanation: "You must be at least 25 years old to serve in the House of Representatives."
+            },
+            {
+                question: "What is the minimum age to serve in the Senate?",
+                options: ["25 years", "30 years", "35 years", "40 years"],
+                correct: 1,
+                explanation: "Senators must be at least 30 years old — 5 years older than the House requirement."
+            },
+            {
+                question: "Which chamber has the sole power to impeach federal officials?",
+                options: ["Senate", "House of Representatives", "Both equally", "Supreme Court"],
+                correct: 1,
+                explanation: "The House has the sole power to impeach (bring charges). The Senate then tries the impeachment."
+            },
+            {
+                question: "Which chamber confirms presidential appointments?",
+                options: ["House of Representatives", "Senate", "Both chambers", "Neither"],
+                correct: 1,
+                explanation: "The Senate has the exclusive power to confirm (or reject) presidential appointments, including judges and cabinet members."
+            },
+            {
+                question: "Who serves as the presiding officer of the Senate?",
+                options: ["Speaker of the House", "Senate Majority Leader", "Vice President", "President Pro Tempore"],
+                correct: 2,
+                explanation: "The Vice President of the United States serves as President of the Senate and can vote to break ties."
+            },
+            {
+                question: "How often is House apportionment adjusted?",
+                options: ["Every 2 years", "Every 4 years", "Every 10 years", "Never"],
+                correct: 2,
+                explanation: "House seats are reapportioned every 10 years following the census to reflect population changes."
+            }
+        ];
+
+        // Navigation
+        const navBtns = document.querySelectorAll('.nav-btn');
+        const sections = document.querySelectorAll('.section');
+
+        navBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const sectionId = btn.dataset.section;
+                
+                navBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Also update mobile nav
+                document.querySelectorAll(`.nav-btn[data-section="${sectionId}"]`).forEach(b => b.classList.add('active'));
+                
+                sections.forEach(s => s.classList.remove('active'));
+                document.getElementById(sectionId).classList.add('active');
+            });
+        });
+
+        // Render chamber seats visualization
+        function renderSeats(containerId, total, composition) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            
+            let seatIndex = 0;
+            for (const [party, count] of Object.entries(composition)) {
+                for (let i = 0; i < count; i++) {
+                    const seat = document.createElement('div');
+                    seat.className = `seat ${party}`;
+                    seat.title = party.charAt(0).toUpperCase() + party.slice(1);
+                    seat.style.animationDelay = `${seatIndex * 2}ms`;
+                    container.appendChild(seat);
+                    seatIndex++;
+                }
+            }
+        }
+
+        // Initialize seat visualizations (approximate current composition)
+        renderSeats('house-seats', 435, { dem: 213, rep: 220, vacant: 2 });
+        renderSeats('senate-seats', 100, { dem: 47, rep: 49, ind: 4 });
+
+        // Populate state dropdown
+        const stateSelect = document.getElementById('state-select');
+        stateData.forEach(state => {
+            const option = document.createElement('option');
+            option.value = state.abbr;
+            option.textContent = state.name;
+            stateSelect.appendChild(option);
+        });
+
+        // State lookup
+        stateSelect.addEventListener('change', () => {
+            const state = stateData.find(s => s.abbr === stateSelect.value);
+            const resultDiv = document.getElementById('state-result');
+            
+            if (state) {
+                document.getElementById('state-name').textContent = state.name;
+                document.getElementById('state-house-seats').textContent = state.seats;
+                document.getElementById('state-total').textContent = state.seats + 2;
+                document.getElementById('state-electoral').textContent = state.seats + 2;
+                resultDiv.classList.add('visible');
+            } else {
+                resultDiv.classList.remove('visible');
+            }
+        });
+
+        // Population calculator
+        const populationInput = document.getElementById('population-input');
+        const calcResult = document.getElementById('calc-result');
+
+        populationInput.addEventListener('input', (e) => {
+            const value = e.target.value.replace(/[^0-9]/g, '');
+            const population = parseInt(value) || 0;
+            
+            // Format with commas
+            e.target.value = population.toLocaleString();
+            
+            // Calculate estimated seats (simplified - real apportionment uses Huntington-Hill method)
+            const avgPeoplePerRep = 760000;
+            let seats = Math.round(population / avgPeoplePerRep);
+            seats = Math.max(1, seats); // Minimum 1 seat per state
+            
+            calcResult.textContent = seats;
+        });
+
+        // Quiz functionality
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        function initQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            answered = false;
+            
+            // Reset progress dots
+            const progressContainer = document.getElementById('quiz-progress');
+            progressContainer.innerHTML = '';
+            quizQuestions.forEach((_, i) => {
+                const dot = document.createElement('div');
+                dot.className = 'quiz-progress-dot' + (i === 0 ? ' active' : '');
+                progressContainer.appendChild(dot);
+            });
+            
+            document.getElementById('quiz-content').style.display = 'block';
+            document.getElementById('quiz-score').style.display = 'none';
+            
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const q = quizQuestions[currentQuestion];
+            document.getElementById('quiz-question').textContent = q.question;
+            
+            const optionsContainer = document.getElementById('quiz-options');
+            optionsContainer.innerHTML = '';
+            
+            q.options.forEach((option, i) => {
+                const optionEl = document.createElement('div');
+                optionEl.className = 'quiz-option';
+                optionEl.textContent = option;
+                optionEl.addEventListener('click', () => selectAnswer(i));
+                optionsContainer.appendChild(optionEl);
+            });
+            
+            document.getElementById('quiz-feedback').classList.remove('visible', 'correct', 'incorrect');
+            document.getElementById('quiz-btn').disabled = true;
+            document.getElementById('quiz-btn').textContent = currentQuestion < quizQuestions.length - 1 ? 'Next Question' : 'See Results';
+            answered = false;
+        }
+
+        function selectAnswer(index) {
+            if (answered) return;
+            answered = true;
+            
+            const q = quizQuestions[currentQuestion];
+            const options = document.querySelectorAll('.quiz-option');
+            const feedback = document.getElementById('quiz-feedback');
+            const progressDots = document.querySelectorAll('.quiz-progress-dot');
+            
+            options.forEach((opt, i) => {
+                opt.classList.add('disabled');
+                if (i === q.correct) {
+                    opt.classList.add('correct');
+                } else if (i === index && index !== q.correct) {
+                    opt.classList.add('incorrect');
+                }
+            });
+            
+            if (index === q.correct) {
+                score++;
+                feedback.textContent = `✓ Correct! ${q.explanation}`;
+                feedback.classList.add('correct');
+                progressDots[currentQuestion].classList.add('correct');
+            } else {
+                feedback.textContent = `✗ Not quite. ${q.explanation}`;
+                feedback.classList.add('incorrect');
+                progressDots[currentQuestion].classList.add('incorrect');
+            }
+            
+            feedback.classList.add('visible');
+            document.getElementById('quiz-btn').disabled = false;
+        }
+
+        document.getElementById('quiz-btn').addEventListener('click', () => {
+            currentQuestion++;
+            
+            if (currentQuestion < quizQuestions.length) {
+                const progressDots = document.querySelectorAll('.quiz-progress-dot');
+                progressDots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentQuestion);
+                });
+                showQuestion();
+            } else {
+                // Show results
+                document.getElementById('quiz-content').style.display = 'none';
+                document.getElementById('quiz-score').style.display = 'block';
+                document.getElementById('final-score').textContent = `${score}/${quizQuestions.length}`;
+            }
+        });
+
+        document.getElementById('restart-quiz').addEventListener('click', initQuiz);
+
+        // Initialize quiz on page load
+        initQuiz();
+    </script>
+</body>
+</html>
